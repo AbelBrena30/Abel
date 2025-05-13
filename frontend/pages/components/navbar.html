@@ -1,0 +1,193 @@
+<style>
+    @font-face {
+        font-family: "Josefin Sans";
+        src: url("https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic");
+        font-weight: bolder;
+    }
+
+    *, body, html {
+        font-family: "Josefin Sans";
+    }
+
+    nav {
+        background-color: #2E86C1;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Josefin Sans';
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        background-color: #2E86C1;
+    }
+
+    nav ul li {
+        position: relative;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: #1A5276;
+    }
+
+    /* Submenú */
+    nav ul li ul {
+        display: none;
+        position: absolute;
+        background-color: #2E86C1;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        top: 100%;
+        left: 0;
+        min-width: 180px;
+        z-index: 1000;
+    }
+
+    nav ul li:hover ul {
+        display: block;
+    }
+
+    nav ul li ul li a {
+        padding: 10px 15px;
+        white-space: nowrap;
+    }
+
+    nav ul li ul li a:hover {
+        background-color: #1A5276;
+    }
+
+    .menu-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        z-index: 2000;
+        background: none;
+        border: none;
+    }
+
+    .menu-icon svg {
+        width: 30px;
+        height: 30px;
+        fill: white;
+    }
+
+    #popup {
+        position: absolute;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        top: 40%;
+        left: 40%;
+        width: 380px;
+        height: 200px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        border: 1px solid white;
+    }
+
+    #popup h4 {
+        position: relative;
+        left: 30%;
+        width: 70%;
+        color: white;
+        padding: 10px;
+    }
+
+    #popup button {
+        position: relative;
+        top: 70px;
+        right: 25%;
+        margin-top: 20px;
+        margin-left: 5px;
+        padding: 10px 20px;
+        background-color: #2E86C1;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 150px;
+        height: 40px;
+    }
+
+    #popup button:hover {
+        background-color: #1A5276;
+    }
+
+</style>
+
+<nav>
+    <ul id="navbar-container">
+        <li><a href="/inicio.html">Inicio</a></li>
+
+        <li>
+            <a>Productos</a>
+            <ul>
+                <li><a href="/pages/productos/agregar-productos.html">Agregar producto</a></li>
+                <li><a href="/pages/productos/ver-productos.html">Ver productos</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a>Clientes</a>
+            <ul>
+                <li><a href="/pages/clientes/agregar-clientes.html">Agregar cliente</a></li>
+                <li><a href="/pages/clientes/ver-clientes.html">Ver clientes</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a>Proveedores</a>
+            <ul>
+                <li><a href="/pages/proveedores/agregar-proveedores.html">Agregar proveedor</a></li>
+                <li><a href="/pages/proveedores/ver-proveedores.html">Ver proveedores</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a>Ventas</a>
+            <ul>
+                <li><a href="/pages/ventas/agregar-ventas.html">Agregar venta</a></li>
+                <li><a href="/pages/ventas/ver-ventas.html">Ver ventas</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <button class="menu-icon" aria-label="Abrir menú" id="menu-icon">
+        <svg viewBox="0 0 24 24">
+            <rect y="4" width="24" height="3"/>
+            <rect y="10" width="24" height="3"/>
+            <rect y="16" width="24" height="3"/>
+        </svg>
+    </button>
+
+    <div id="dropdown-menu" style="display:none; position:absolute; top:47px; right:1px; background:#2E86C1; border-radius:15px 0px 0px 15px; box-shadow:0 2px 8px rgba(0,0,0,0.15); z-index:1; width: 200px; height: 300px;">
+        <a href="#" id="cerrar-sesion" style="display:block; color:white; padding:12px 24px; text-decoration:none; border: 1px solid black; border-radius:15px 0px 0px 0px;">Cerrar Sesión</a>
+    </div>
+
+    <div id="background" style="width: 210vh; height: 100vh; backdrop-filter: blur(5px); background-color: rgba(0, 0, 0, 0.5); position: fixed; z-index: 0; display: none;"></div>
+
+    <div id="popup" style="display: none; z-index: 1;">
+        <h4 id="lblConfirmar">Seguro que quieres cerrar sesión?</h4>
+        <button id="btnCerrarSesion">Sí</button>
+        <button id="btnCancelar">No</button>
+    </div>
+</nav>

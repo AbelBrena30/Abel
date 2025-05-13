@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic" rel="stylesheet" />
+  <title>Vivero | Confirmacion de Administrador</title>
+</head>
+<body>
+
+    <div class="background" id="bg"></div>
+
+    
+    <div class="form" id="form">
+        <h1>Verificar Administrador</h1>
+        <h3 id="lblAdmin">Contraseña:</h3>
+        <input type="password" id="passAdmin" required>
+        <button id="btnAdmin" value="Verificar">Verificar</button>
+    </div>
+
+    <div class="popup" id="popup" style="display: none;">
+        <h4 id="lblIncorrecto" style="display: none;">Contraseña incorrecta</h4>
+        <h4 id="lblCorrecto" style="display: none;">Contraseña correcta</h4>
+    </div>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

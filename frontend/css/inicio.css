@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#inicio {
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+}
+
+#inicio-contenedor {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inicio-texto {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#inicio-texto h1 {
+    font-size: 50px;
+    color: black;
+}
+
+#inicio-texto p {
+    font-size: 20px;
+    color: black;
+}
+
+#inicio-boton {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="reg.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic" rel="stylesheet" />
+  <title>Vivero | Registrar</title>
+</head>
+<body>
+    <div class="background" id="bg"></div>
+
+    <div id="ajustes"></div>
+
+    <div class="menu" id="menu" style="display: none;">
+        <img src="/frontend/img/cerrar.svg" alt="cerrar" id="cerrar">
+        <ul>
+            <li class="link"><a href="/frontend/pages/login/login.html">Usuario Existente</a></li>
+            <li class="link"><a href="">Adminitrador</a></li>
+            <li class="link"><a href="">Tema</a></li>
+        </ul>
+    </div>
+
+    <div class="form" id="form" >
+        <h1>Registrarse</h1>
+        <div class="persona" id="persona"></div>
+        <h3 id="lblUser">Usuario:</h3>
+        <input type="text" id="user" required>
+        <h3 id="lblPass">Contraseña:</h3>
+        <input type="password" id="pass" required>
+        <h3 id="lblPass2">Repetir Contraseña:</h3>
+        <input type="password" id="pass2" required>
+        <input type="submit" id="btnRegistrar" value="Registrarse">
+        <h4 id="lblCampos" style="display: none;">Rellenar todoslos campos</h4>
+        <h4 id="lblError" style="display: none;">Las contraseñas no coinciden</h4>
+        <h4 id="lblSi" style="display: none;">Las contraseñas coinciden</h4>
+        <h4 id="lblCaracteres" style="display: none;">La contraseña debe contener <br>al menos 8 caracteres</h4>
+    </div>
+
+    <div class="popup" id="popup" style="display: none;">
+        <h4 id="lblUsuario">Usuario registrado <br> correctamente</h4>
+        <h4 id="lblRegister" style="display: none;">Usuario ya registrado</h4>
+    </div>
+    
+
+    <script src="reg.js"></script>
+</body>
+</html>

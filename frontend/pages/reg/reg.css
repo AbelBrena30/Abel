@@ -1,0 +1,331 @@
+* {    
+    font-family: 'Josefin Sans';
+    font-weight: 700;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('/frontend/img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px) brightness(0.3);
+    z-index: 0;
+}
+
+#ajustes {
+    background-image: url('/frontend/img/ajustes.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    padding: 4px;
+    top: 0px;
+    left: 0px;
+}
+
+.menu{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 250px;
+    height: 300px;
+    background: rgba(185, 185, 185, 0.15);
+    border-radius: 0px 15px 15px 15px;
+    display: flex;
+}
+
+#cerrar {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    right: 0px;
+}
+
+#cerrar:hover {
+    cursor: pointer;
+    border-radius: 0px 15px 0px 0px;
+    background-color: rgb(155, 155, 155);
+}
+
+.menu ul a{
+    text-decoration: none;
+    display: flex;
+    font-size: 20px;
+    color: white;
+    border: 1px solid black;
+    padding: 8px;
+    margin: 0;
+    width: 93%;
+    left: 0px;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: column;
+    top: 0px;
+    list-style: none;
+    width: 100%;
+    height: 20px;
+    margin-top: 30px;
+    padding: 0px;
+
+}
+
+.link:hover {
+    background: rgba(85, 85, 85, 0.85);
+    color: black;
+    cursor: pointer;
+}
+
+.form{
+    position: relative;
+    width: 400px;
+    height: 600px;
+    background: rgba(185, 185, 185, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(81, 88, 185, 0.37);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    z-index: 1;
+    flex-direction: column;
+}
+
+.form h1 {
+    position: relative;
+    top: 50px;
+    color: white;
+    font-size: 30px;
+    margin: 0;
+}
+
+.persona {
+    background-image: url('/frontend/img/persona.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 50px;
+    padding: 4px;
+    left: 0px;
+}
+
+#user {
+    width: 60%;
+    margin: 0;
+    background-color: rgba(155, 155, 155, 0.15);
+    border:none;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    position: relative;
+    top: 60px;
+    border-radius: 15px;
+    border:  1px solid rgb(255, 255, 255);
+}
+
+#user:focus {
+    border:  1px solid rgb(255, 255, 255);
+    outline: none;
+}
+
+#pass {
+    width: 60%;
+    border:  1px solid rgb(255, 255, 255);
+    margin: 0;
+    background-color: rgba(155, 155, 155, 0.15);
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    position: relative;
+    display: flex;
+    top: 80px;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+#pass:focus {
+    border:  1px solid rgb(255, 255, 255);
+    outline: none;
+}
+
+#pass2 {
+    width: 60%;
+    border:  1px solid rgb(255, 255, 255);
+    margin: 0;
+    background-color: rgba(155, 155, 155, 0.15);
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    position: relative;
+    display: flex;
+    top: 100px;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+#pass2:focus {
+    border:  1px solid rgb(255, 255, 255);
+    outline: none;
+}
+
+#lblUser {
+    position: relative;
+    top: 70px;
+    font-size: 15px;
+    color: white;
+}
+
+#lblPass {
+    position: relative;
+    top: 0px;
+    font-size: 15px;
+    color: white;
+    top: 90px;
+}
+
+#lblPass2 {
+    position: relative;
+    top: 0px;
+    font-size: 15px;
+    color: white;
+    top: 110px;
+}
+
+#lblError, #lblSi, #lblCaracteres, #lblCampos {
+    position: relative;
+    display: flex;
+    top: 85px;
+    font-size: 18px;
+    color: red;
+    text-shadow: 0 0px 3px rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+}
+
+#btnRegistrar {
+    width: 62%;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 15px;
+    margin: 0;
+    position: relative;
+    top: 170px;
+}
+
+#btnRegistrar:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+    cursor: pointer;
+}
+
+.form #eye {
+    background-image: url('/frontend/img/visibility.svg');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 29px;
+    z-index: 1;
+    position: relative;
+    top: 29.1px;
+    left: 104px;
+    border-radius: 0px 15px 15px 0px;
+    border: 1px solid white;
+}
+
+#eye:hover {
+    cursor: pointer;
+}
+
+#btnInicio {
+    width: 62%;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 15px;
+    margin: 0;
+    position: relative;
+    top: 60px;
+}
+
+#btnInicio:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+    cursor: pointer;
+}
+
+.popup {
+    position: absolute;
+    width: 400px;
+    height: 150px;
+    background: rgba(185, 185, 185, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(81, 88, 185, 0.37);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    z-index: 1;
+    flex-direction: column; 
+}
+
+.popup #lblUsuario {
+    position: absolute;
+    top: 30px;
+    color: white;
+    font-size: 25px;
+    margin: 0;
+    z-index: 1;
+}
+
+.popup #lblRegister {
+    position: absolute;
+    top: 30px;
+    color: white;
+    font-size: 25px;
+    margin: 0;
+    z-index: 1;
+}
+
+.popup #btnConfirmar {
+    position: absolute;
+    top: 100px;
+    width: 62%;
+    font-size: 18px;
+    padding: 5px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 15px;
+    margin: 0;
+}
+
+.popup #btnConfirmar:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}
