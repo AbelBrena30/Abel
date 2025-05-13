@@ -1,0 +1,255 @@
+Este es el backend del proyecto que hemos llevado a cabo. Analizalo en profundidad y compara si se ajusta al FrontEnd que hemos hecho. En caso de que no, prepara las correcciones necesarias. Se presenta a continuación: 
+
+Claro, aquí tienes un mensaje completo de contextualización del backend del proyecto del vivero, diseñado para que otro programador (IA o humano) que trabaje el frontend pueda entenderlo y adaptarse sin problemas. Incluye explicaciones claras y todos los fragmentos de código necesarios: modelos, rutas y detalles importantes de la estructura.
+
+
+---
+
+[Contexto General del Proyecto]
+
+Este proyecto es un sistema web para un vivero, diseñado para funcionar tanto en una red local como en varios dispositivos. Se compone de un backend en Node.js con Express y MongoDB como base de datos. El sistema gestiona:
+
+Productos
+
+Clientes
+
+Proveedores
+
+Ventas
+
+Usuarios (login y gestión de cuentas)
+
+
+El frontend es independiente del backend y se conecta mediante peticiones HTTP (fetch) a la API. Cada entidad tiene su modelo y su ruta correspondiente en el backend.
+
+
+---
+
+[Estructura de Carpetas - Backend]
+
+vivero-app/
+│
+├── db/
+│   └── connection.js         # Conexión a MongoDB
+│
+├── models/
+│   ├── cliente_model.js
+│   ├── proveedor_model.js
+│   ├── producto_model.js
+│   ├── venta_model.js
+│   └── usuario_model.js
+│
+├── routes/
+│   ├── cliente_route.js
+│   ├── proveedor_route.js
+│   ├── producto_route.js
+│   ├── venta_route.js
+│   └── usuario_route.js
+│
+├── index.js                  # Archivo principal del backend
+├── package.json
+└── package-lock.json
+
+
+---
+
+[1. Conexión a MongoDB (db/connection.js)]
+
+const mongoose = require("mongoose");
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect("mongodb://localhost:27017/viveroDB");
+    console.log("Conectado a MongoDB");
+  } catch (error) {
+    console.error("Error al conectar a MongoDB:", error);
+  }
+};
+
+module.exports = connectDB;
+
+
+---
+
+[2. Modelos]
+
+cliente_model.js
+
+const mongoose = require("mongoose");
+
+const clienteSchema = new mongoose.Schema({
+  nombre: { type: String, required: true, trim: true },
+  direccion: { type: String, required: true, trim: true },
+  telefono: { type: String, required: true, trim: true }
+});
+
+module.exports = mongoose.model("Cliente", clienteSchema);
+
+proveedor_model.js
+
+const mongoose = require("mongoose");
+
+const proveedorSchema = new mongoose.Schema({
+  nombre: { type: String, required: true, trim: true },
+  direccion: { type: String, required: true, trim: true },
+  telefono: { type: String, required: true, trim: true }
+});
+
+module.exports = mongoose.model("Proveedor", proveedorSchema);
+
+producto_model.js
+
+const mongoose = require("mongoose");
+
+const productoSchema = new mongoose.Schema({
+  nombre: { type: String, required: true, trim: true },
+  precio: { type: Number, required: true },
+  stock: { type: Number, required: true },
+  proveedor: { type: mongoose.Schema.Types.ObjectId, ref: "Proveedor" }
+});
+
+module.exports = mongoose.model("Producto", productoSchema);
+
+venta_model.js
+
+const mongoose = require("mongoose");
+
+const ventaSchema = new mongoose.Schema({
+  cliente: { type: mongoose.Schema.Types.ObjectId, ref: "Cliente" },
+  productos: [{
+    producto: { type: mongoose.Schema.Types.ObjectId, ref: "Producto" },
+    cantidad: { type: Number, required: true }
+  }],
+  fecha: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model("Venta", ventaSchema);
+
+usuario_model.js
+
+const mongoose = require("mongoose");
+
+const usuarioSchema = new mongoose.Schema({
+  nombreUsuario: { type: String, required: true, trim: true },
+  contrasena: { type: String, required: true },
+  rol: { type: String, enum: ["admin", "empleado"], default: "empleado" }
+});
+
+module.exports = mongoose.model("Usuario", usuarioSchema);
+
+
+---
+
+[3. Rutas]
+
+Cada archivo de ruta define las operaciones CRUD. Aquí mostramos dos completas de ejemplo:
+
+routes/cliente_route.js
+
+const express = require("express");
+const router = express.Router();
+const Cliente = require("../models/cliente_model");
+
+router.post("/", async (req, res) => {
+  try {
+    const nuevo = new Cliente(req.body);
+    await nuevo.save();
+    res.status(201).json(nuevo);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.get("/", async (req, res) => {
+  try {
+    const clientes = await Cliente.find();
+    res.json(clientes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// otras rutas: GET by ID, PUT, DELETE...
+module.exports = router;
+
+routes/usuario_route.js
+
+const express = require("express");
+const router = express.Router();
+const Usuario = require("../models/usuario_model");
+
+// POST Login
+router.post("/login", async (req, res) => {
+  const { nombreUsuario, contrasena } = req.body;
+  try {
+    const usuario = await Usuario.findOne({ nombreUsuario, contrasena });
+    if (!usuario) return res.status(401).json({ error: "Credenciales incorrectas" });
+    res.json({ mensaje: "Inicio de sesión exitoso", usuario });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST Crear nuevo usuario (requiere autorización desde frontend)
+router.post("/", async (req, res) => {
+  try {
+    const nuevoUsuario = new Usuario(req.body);
+    await nuevoUsuario.save();
+    res.status(201).json(nuevoUsuario);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+module.exports = router;
+
+
+---
+
+[4. Archivo Principal: index.js]
+
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./db/connection");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+connectDB();
+
+// Rutas
+app.use("/api/clientes", require("./routes/cliente_route"));
+app.use("/api/proveedores", require("./routes/proveedor_route"));
+app.use("/api/productos", require("./routes/producto_route"));
+app.use("/api/ventas", require("./routes/venta_route"));
+app.use("/api/usuarios", require("./routes/usuario_route"));
+
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Servidor escuchando en puerto ${PORT}`));
+
+
+---
+
+[Notas importantes para el Frontend Developer]
+
+Las rutas están activas en http://localhost:3000/api/....
+
+El sistema usa peticiones fetch() para conectar con las rutas:
+
+Ejemplo para crear cliente:
+
+fetch("http://localhost:3000/api/clientes", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ nombre: "Carlos", direccion: "Calle 1", telefono: "123456" })
+})
+
+
+El login está disponible en /api/usuarios/login con método POST.
+
+
+
+---
+
+¿Deseas que te lo pase también en archivo PDF o Markdown para enviarlo por correo o compartirlo?
