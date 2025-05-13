@@ -1,0 +1,63 @@
+Abel/
+├── frontend/
+│   ├── font/
+│   │   ├── JosefinSans-Thin.woff
+│   ├── img/
+│   │   ├── ajustes.png
+│   │   ├── ajustes.svg
+│   │   ├── ajustes-blanco.svg
+│   │   ├── cerrar.svg
+│   │   ├── bg.jpg
+│   ├── pages/
+│   │   ├── admin/
+│   │   │   ├── admin.html
+│   │   │   ├── admin.css
+│   │   │   ├── admin.js
+│   │   ├── login/
+│   │   │   ├── login.html
+│   │   │   ├── login.css
+│   │   │   ├── login.js
+│   │   ├── inicio/
+│   │   │   ├── inicio.html
+│   │   │   ├── inicio.css
+│   │   │   ├── inicio.js
+│   │   ├── reg/
+│   │   │   ├── reg.html
+│   │   │   ├── reg.css
+│   │   │   ├── reg.js
+│   │   ├── components/
+│   │   │   ├── components.html
+│   │   │   ├── components.css
+│   │   │   ├── components.js
+│   │   ├── ver/
+│   │   │   ├── ver.html
+│   │   │   ├── ver.css
+│   │   │   ├── ver.js
+│   │   ├── proveedores/
+│   │   │   ├── agregar/
+│   │   │   │   ├── agregar-proveedores.html
+│   │   │   │   ├── agregar-proveedores.css
+│   │   │   │   ├── agregar-proveedores.js
+│   │   │   ├── ver/
+│   │   │   │   ├── ver-proveedores.html
+│   │   │   │   ├── ver-proveedores.css
+│   │   │   │   ├── ver-proveedores.js
+│   │   ├── productos/
+│   │   │   ├── agregar/
+│   │   │   │   ├── agregar-productos.html
+│   │   │   │   ├── agregar-productos.css
+│   │   │   │   ├── agregar-productos.js
+│   │   │   ├── ver/
+│   │   │   │   ├── ver-productos.html
+│   │   │   │   ├── ver-productos.css
+│   │   │   │   ├── ver-productos.js
+│   │   ├── clientes/
+│   │   │   ├── agregar/
+│   │   │   │   ├── agregar-clientes.html
+│   │   │   │   ├── agregar-clientes.css
+│   │   │   │   ├── agregar-clientes.js
+│   │   │   ├── ver/
+│   │   │   │   ├── ver-clientes.html
+│   │   │   │   ├── ver-clientes.css
+│   │   │   │   ├── ver-clientes.js
+├── backend/
